@@ -1,0 +1,1471 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+  <meta charset="UTF-8">
+  <title>Ελένη – ΕΙΝΑΙ vs ΦΑΙΝΕΣΘΑΙ (Debate)</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    :root {
+      --bg: #e8f4f7;
+      --card-bg: #ffffff;
+      --accent: #006064;
+      --accent-soft: #b2ebf2;
+      --accent-alt: #ff8f00;
+      --text-main: #123043;
+      --text-muted: #546e60;
+      --border: #d0e3ea;
+    }
+
+    * {
+      box-sizing: border-box;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    body {
+      margin: 0;
+      background: radial-gradient(circle at top, #e0f7fa 0, #e8f4f7 40%, #e3edf2 100%);
+      color: var(--text-main);
+    }
+
+    header {
+      padding: 1.2rem 1rem 0.4rem;
+      text-align: center;
+    }
+
+    .title-row {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 0.6rem;
+      flex-wrap: wrap;
+    }
+
+    .site-logo {
+      height: 52px;
+      width: auto;
+    }
+
+    header h1 {
+      margin: 0.2rem 0;
+      font-size: 1.7rem;
+      color: var(--accent);
+    }
+
+    header p {
+      margin: 0.15rem 0 0.4rem;
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      text-align: center;
+      width: 100%;
+    }
+
+    .step-indicator {
+      display: flex;
+      justify-content: center;
+      gap: 0.4rem;
+      margin: 0.5rem 0 1rem;
+      flex-wrap: wrap;
+    }
+
+    .step-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #c2d6de;
+      transition: transform 0.2s, background 0.2s;
+    }
+
+    .step-dot.active {
+      background: var(--accent);
+      transform: scale(1.2);
+    }
+
+    main {
+      max-width: 980px;
+      margin: 0 auto 1.5rem;
+      padding: 0 1rem 1.5rem;
+    }
+
+    .card {
+      background: var(--card-bg);
+      border-radius: 12px;
+      padding: 1.3rem 1.25rem;
+      box-shadow: 0 10px 28px rgba(0, 0, 0, 0.06);
+      border: 1px solid var(--border);
+      margin-bottom: 1rem;
+    }
+
+    .step {
+      display: none;
+    }
+
+    .step.active {
+      display: block;
+    }
+
+    h2 {
+      margin-top: 0;
+      font-size: 1.25rem;
+      color: var(--accent);
+    }
+
+    h3 {
+      margin-top: 0.8rem;
+      font-size: 1.05rem;
+    }
+
+    p {
+      font-size: 0.96rem;
+      line-height: 1.55;
+      text-align: justify;
+      margin: 0.25rem 0;
+    }
+
+    ul {
+      padding-left: 1.2rem;
+      margin: 0.2rem 0 0.6rem;
+    }
+
+    li {
+      margin-bottom: 0.25rem;
+      font-size: 0.95rem;
+      text-align: justify;
+    }
+
+    .muted {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .highlight-box {
+      background: #e3f2fd;
+      border-left: 4px solid var(--accent);
+      padding: 0.6rem 0.8rem;
+      border-radius: 10px;
+      margin: 0.6rem 0;
+      font-size: 0.92rem;
+    }
+
+    .btn-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      margin-top: 0.8rem;
+    }
+
+    button {
+      border-radius: 999px;
+      border: none;
+      padding: 0.45rem 1rem;
+      font-size: 0.93rem;
+      cursor: pointer;
+      background: var(--accent);
+      color: #ffffff;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      transition: transform 0.1s ease, box-shadow 0.15s ease, background 0.15s ease;
+    }
+
+    button.secondary {
+      background: #eceff1;
+      color: var(--text-main);
+    }
+
+    button.small {
+      padding: 0.3rem 0.8rem;
+      font-size: 0.85rem;
+    }
+
+    button:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 5px 14px rgba(0, 96, 100, 0.25);
+    }
+
+    button.secondary:hover {
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+    }
+
+    input[type="number"],
+    textarea {
+      width: 100%;
+      padding: 0.4rem 0.55rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      font-size: 0.95rem;
+      font-family: inherit;
+      resize: vertical;
+    }
+
+    textarea {
+      min-height: 70px;
+    }
+
+    .vote-inputs {
+      display: grid;
+      grid-template-columns: repeat(auto-fit,minmax(190px,1fr));
+      gap: 0.6rem;
+      margin-top: 0.4rem;
+    }
+
+    .vote-box {
+      border-radius: 10px;
+      padding: 0.5rem 0.6rem;
+      background: #f4fbfd;
+      border: 1px dashed var(--border);
+      font-size: 0.9rem;
+    }
+
+    .vote-results {
+      margin-top: 0.6rem;
+      font-size: 0.92rem;
+    }
+
+    .bar-chart {
+      margin-top: 0.4rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+    }
+
+    .bar-row {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.85rem;
+    }
+
+    .bar-label {
+      width: 140px;
+      flex-shrink: 0;
+    }
+
+    .bar-track {
+      flex: 1;
+      height: 12px;
+      border-radius: 999px;
+      background: #dde5ea;
+      overflow: hidden;
+    }
+
+    .bar-fill {
+      height: 100%;
+      border-radius: 999px;
+      min-width: 2%;
+      background: linear-gradient(90deg,#006064,#00acc1);
+    }
+
+    .bar-fill.seeming {
+      background: linear-gradient(90deg,#ff8f00,#ffb74d);
+    }
+
+    .bar-fill.uncertain {
+      background: linear-gradient(90deg,#607d8b,#b0bec5);
+    }
+
+    .bar-value {
+      width: 45px;
+      text-align: right;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .scene-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit,minmax(230px,1fr));
+      gap: 0.8rem;
+      margin-top: 0.6rem;
+    }
+
+    .scene-card {
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      padding: 0.7rem 0.75rem;
+      background: #ffffff;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+      font-size: 0.9rem;
+    }
+
+    .scene-tag {
+      display: inline-block;
+      padding: 0.12rem 0.5rem;
+      border-radius: 999px;
+      font-size: 0.8rem;
+      background: var(--accent-soft);
+      color: #004d40;
+      margin-bottom: 0.3rem;
+    }
+
+    .scene-options {
+      margin-top: 0.4rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      font-size: 0.85rem;
+    }
+
+    .scene-options label {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.25rem;
+      padding: 0.2rem 0.55rem;
+      border-radius: 999px;
+      background: #f5f5f5;
+      cursor: pointer;
+    }
+
+    .scene-options input {
+      margin: 0;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit,minmax(240px,1fr));
+      gap: 0.8rem;
+      margin-top: 0.4rem;
+    }
+
+    .role-box {
+      border-radius: 10px;
+      border: 1px dashed #8ab6c4;
+      padding: 0.6rem 0.7rem;
+      background: #f5fdff;
+      font-size: 0.9rem;
+    }
+
+    .role-box.seeming {
+      background: #fff7ed;
+      border-color: #ffb74d;
+    }
+
+    .role-box.judges {
+      background: #f4f7ff;
+      border-color: #9fa8da;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 0.12rem 0.5rem;
+      border-radius: 999px;
+      font-size: 0.8rem;
+      background: var(--accent-soft);
+      color: #004d40;
+      margin-bottom: 0.2rem;
+    }
+
+    .badge.orange {
+      background: #ffe0b2;
+      color: #e65100;
+    }
+
+    .badge.blue {
+      background: #bbdefb;
+      color: #0d47a1;
+    }
+
+    .arg-card {
+      border-radius: 10px;
+      border: 1px dashed var(--border);
+      padding: 0.5rem 0.6rem;
+      margin-top: 0.4rem;
+      background: #fafafa;
+    }
+
+    .arg-card-title {
+      font-size: 0.9rem;
+      font-weight: 600;
+      margin-bottom: 0.2rem;
+      color: var(--text-muted);
+    }
+
+    /* Χρονόμετρο */
+    .timer-display {
+      font-size: 1.8rem;
+      font-weight: 600;
+      text-align: center;
+      margin: 0.4rem 0 0.6rem;
+    }
+
+    .timer-display span {
+      display: inline-block;
+      min-width: 2ch;
+    }
+
+    .inline-inputs {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      align-items: center;
+      margin-top: 0.2rem;
+    }
+
+    .inline-inputs input[type="number"] {
+      width: 70px;
+    }
+
+    /* Rubric κριτών */
+    .rubric-block {
+      margin-top: 0.6rem;
+      border-radius: 14px;
+      border: 1px solid #b0bec5;
+      padding: 0.8rem 0.9rem 0.9rem;
+      background: radial-gradient(circle at top left,#e0f7fa 0,#fafafa 40%,#ffffff 100%);
+    }
+
+    .rubric-title-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 0.6rem;
+      flex-wrap: wrap;
+    }
+
+    .rubric-title-main {
+      display: flex;
+      flex-direction: column;
+      gap: 0.1rem;
+    }
+
+    .rubric-title-main strong {
+      font-size: 0.98rem;
+    }
+
+    .rubric-subtitle {
+      font-size: 0.86rem;
+      color: var(--text-muted);
+    }
+
+    .rubric-badge {
+      padding: 0.15rem 0.6rem;
+      border-radius: 999px;
+      font-size: 0.8rem;
+      background: #fff3e0;
+      color: #e65100;
+      font-weight: 600;
+    }
+
+    .rubric-table {
+      margin-top: 0.6rem;
+      border-radius: 10px;
+      background: #f4fbfd;
+      padding: 0.45rem 0.55rem 0.55rem;
+    }
+
+    .rubric-row {
+      display: grid;
+      grid-template-columns: 2.4fr 0.9fr 0.9fr;
+      gap: 0.35rem 0.5rem;
+      align-items: center;
+      font-size: 0.9rem;
+      padding: 0.18rem 0;
+    }
+
+    .rubric-row.header {
+      font-weight: 600;
+      color: var(--text-main);
+      border-bottom: 1px solid #cfd8dc;
+      margin-bottom: 0.2rem;
+      padding-bottom: 0.25rem;
+    }
+
+    .rubric-row:not(.header) {
+      border-bottom: 1px dashed #d9e2e7;
+    }
+
+    .rubric-row:not(.header):last-child {
+      border-bottom: none;
+    }
+
+    .rubric-label {
+      font-size: 0.88rem;
+      color: #37474f;
+      font-weight: bold;
+      text-align: left;
+    }
+
+    .rubric-table input[type="number"] {
+      width: 56px;
+      margin: 0;
+      text-align: center;
+      font-weight: 600;
+    }
+
+    .rubric-col-label {
+      font-size: 0.86rem;
+      color: #455a64;
+      text-align: center;
+    }
+
+    .rubric-buttons-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-top: 0.5rem;
+    }
+
+    .round-results-text {
+      margin-top: 0.45rem;
+      font-size: 0.9rem;
+      color: #37474f;
+      text-align: justify;
+    }
+
+    .round-progress {
+      margin-top: 0.5rem;
+      font-size: 0.85rem;
+      color: #37474f;
+    }
+
+    .round-track {
+      margin-top: 0.25rem;
+      width: 100%;
+      height: 12px;
+      border-radius: 999px;
+      background: #eceff1;
+      overflow: hidden;
+    }
+
+    .round-fill {
+      height: 100%;
+      border-radius: 999px;
+      width: 0%;
+      background: linear-gradient(90deg,#006064,#00acc1);
+      transition: width 0.3s ease;
+    }
+
+    .round-progress-label {
+      margin-top: 0.2rem;
+      font-size: 0.84rem;
+      color: #455a64;
+    }
+
+    footer {
+      text-align: center;
+      padding: 0.7rem 0.5rem 1.3rem;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    .no-print {
+      /* στοιχεία που δεν εμφανίζονται στην εκτύπωση */
+    }
+
+    /* Καθαρή σελίδα εκτύπωσης – όπως στην Antigone */
+    #print-summary {
+      display: none;
+      padding: 1.5rem;
+      max-width: 950px;
+      margin: 0 auto;
+      font-size: 0.96rem;
+    }
+
+    #print-summary h1 {
+      font-size: 1.4rem;
+      margin-top: 0;
+      margin-bottom: 0.6rem;
+      text-align: center;
+    }
+
+    #print-summary h2 {
+      font-size: 1.1rem;
+      margin-top: 0.9rem;
+      margin-bottom: 0.3rem;
+    }
+
+    #print-summary p {
+      line-height: 1.4;
+      text-align: justify;
+    }
+
+    #print-summary ul,
+    #print-summary ol {
+      padding-left: 1.2rem;
+    }
+
+    @media (max-width: 600px) {
+      .card {
+        padding: 1rem 0.9rem;
+      }
+      .bar-label {
+        width: 120px;
+      }
+    }
+
+    @media print {
+      body {
+        background: #ffffff !important;
+      }
+      header,
+      main,
+      footer,
+      .no-print {
+        display: none !important;
+      }
+      #print-summary {
+        display: block !important;
+      }
+    }
+  </style>
+</head>
+<body>
+<header>
+  <div class="title-row">
+    <img src="greek logo.png" alt="Λογότυπο" class="site-logo">
+    <h1>Ελένη – ΕΙΝΑΙ vs ΦΑΙΝΕΣΘΑΙ</h1>
+  </div>
+  <p>Δομημένη αντιπαράθεση για αλήθεια, εικόνα και φήμη</p>
+  <div class="step-indicator" id="stepIndicator"></div>
+</header>
+
+<main>
+  <!-- Βήμα 1 – Εισαγωγή -->
+  <section class="card step active">
+    <h2>Βήμα 1: Εισαγωγή στο δίλημμα</h2>
+    <p>
+      Στην <strong>Ελένη του Ευριπίδη</strong> ο πόλεμος για την Τροία παρουσιάζεται ως
+      ένας πόλεμος που ίσως έγινε για ένα <strong>είδωλο</strong> και όχι για την πραγματική Ελένη.
+      Οι άνθρωποι πολεμούν και πεθαίνουν για μια <strong>εικόνα</strong>, όχι για την αλήθεια.
+    </p>
+    <p>
+      Στο μάθημα αυτό θα δουλέψετε με σκηνές από την «Ελένη» και θα οργανώσετε ένα
+      <strong>debate</strong> γύρω από το ερώτημα:
+    </p>
+    <div class="highlight-box">
+      <strong>Τι επηρεάζει τελικά περισσότερο τη ζωή μας – αυτό που <em>είμαστε</em> ή αυτό που
+      <em>φαίνεται</em> προς τα έξω;</strong>
+    </div>
+    <p class="muted">
+      Σκοπός δεν είναι να «κερδίσει» κάποια πλευρά, αλλά να μάθουμε να ακούμε,
+      να επιχειρηματολογούμε και να συνδέουμε το έργο με τη σημερινή εποχή
+      της εικόνας και των social media.
+    </p>
+
+    <div class="btn-row no-print">
+      <span></span>
+      <button type="button" data-next>Επόμενο βήμα ➜</button>
+    </div>
+  </section>
+
+  <!-- Βήμα 2 – Αρχική ψηφοφορία -->
+  <section class="card step">
+    <h2>Βήμα 2: Αρχική ψηφοφορία τάξης</h2>
+    <p>
+      Πριν ασχοληθούμε με τις σκηνές και τα επιχειρήματα, η τάξη τοποθετείται
+      αυθόρμητα στο ερώτημα:
+    </p>
+    <p><strong>«Τι θεωρείς ότι επηρεάζει περισσότερο τη ζωή ενός ανθρώπου σήμερα;»</strong></p>
+    <ul>
+      <li><strong>ΕΙΝΑΙ</strong> – ο πραγματικός χαρακτήρας, οι πράξεις, η αλήθεια.</li>
+      <li><strong>ΦΑΙΝΕΣΘΑΙ</strong> – η εικόνα, η φήμη, όσα νομίζουν οι άλλοι.</li>
+      <li><strong>Δεν είμαι σίγουρος/η</strong>.</li>
+    </ul>
+    <p class="muted">
+      Οι μαθητές/τριες ψηφίζουν με ανάταση χεριού και ο/η εκπαιδευτικός σημειώνει
+      πόσα χέρια σηκώθηκαν σε κάθε επιλογή.
+    </p>
+
+    <div class="vote-inputs">
+      <div class="vote-box">
+        <strong>Πλευρά «ΕΙΝΑΙ»</strong>
+        <input type="number" id="pre-being" min="0" value="0">
+      </div>
+      <div class="vote-box">
+        <strong>Πλευρά «ΦΑΙΝΕΣΘΑΙ»</strong>
+        <input type="number" id="pre-seeming" min="0" value="0">
+      </div>
+      <div class="vote-box">
+        <strong>Αβέβαιος/η</strong>
+        <input type="number" id="pre-uncertain" min="0" value="0">
+      </div>
+    </div>
+
+    <button class="small no-print" type="button" onclick="calculatePreVote()">Υπολογισμός &amp; γράφημα</button>
+
+    <div id="pre-results" class="vote-results"></div>
+    <div id="pre-chart" class="bar-chart"></div>
+
+    <div class="btn-row no-print">
+      <button class="secondary" type="button" data-prev>⟵ Προηγούμενο</button>
+      <button type="button" data-next>Επόμενο βήμα ➜</button>
+    </div>
+  </section>
+
+  <!-- Βήμα 3 – Σκηνές -->
+  <section class="card step">
+    <h2>Βήμα 3: Σκηνές από την «Ελένη» – ΕΙΝΑΙ ή ΦΑΙΝΕΣΘΑΙ;</h2>
+    <p>
+      Διαβάστε τις σύντομες περιγραφές (σε ελεύθερη απόδοση) και σημειώστε:
+      η σκηνή δείχνει περισσότερο κάτι που <strong>είναι</strong> ή κάτι που
+      <strong>φαίνεται</strong>;
+    </p>
+    <p class="muted">
+      Δεν υπάρχει «σωστή» ή «λάθος» απάντηση. Στόχος είναι να δημιουργηθούν
+      <strong>επιχειρήματα</strong> για το debate.
+    </p>
+
+    <div class="scene-grid">
+      <div class="scene-card">
+        <div class="scene-tag">Σκηνή Α</div>
+        <p>
+          Ο Τεύκρος συναντά την Ελένη στην Αίγυπτο και πιστεύει ότι είναι
+          <em>η «προδότρα» Ελένη της Τροίας</em>. Η ίδια προσπαθεί να του εξηγήσει
+          ότι <strong>ποτέ δεν πήγε στην Τροία</strong>.
+        </p>
+        <div class="scene-options">
+          <label><input type="radio" name="scene1" value="einai"> ΕΙΝΑΙ</label>
+          <label><input type="radio" name="scene1" value="fainetai"> ΦΑΙΝΕΣΘΑΙ</label>
+        </div>
+      </div>
+
+      <div class="scene-card">
+        <div class="scene-tag">Σκηνή Β</div>
+        <p>
+          Στην Τροία οι άνθρωποι μισούν την Ελένη και την κατηγορούν για τον πόλεμο,
+          ενώ στην πραγματικότητα αυτό που βρίσκεται εκεί είναι <strong>ένα είδωλο</strong>.
+        </p>
+        <div class="scene-options">
+          <label><input type="radio" name="scene2" value="einai"> ΕΙΝΑΙ</label>
+          <label><input type="radio" name="scene2" value="fainetai"> ΦΑΙΝΕΣΘΑΙ</label>
+        </div>
+      </div>
+
+      <div class="scene-card">
+        <div class="scene-tag">Σκηνή Γ</div>
+        <p>
+          Ο Μενέλαος, ταλαιπωρημένος από τον πόλεμο, δεν πιστεύει στην αρχή
+          ότι η γυναίκα που βλέπει μπροστά του στην Αίγυπτο είναι η αληθινή Ελένη.
+          <em>Το μάτι του</em> δεν συμφωνεί με την αλήθεια.
+        </p>
+        <div class="scene-options">
+          <label><input type="radio" name="scene3" value="einai"> ΕΙΝΑΙ</label>
+          <label><input type="radio" name="scene3" value="fainetai"> ΦΑΙΝΕΣΘΑΙ</label>
+        </div>
+      </div>
+
+      <div class="scene-card">
+        <div class="scene-tag">Σκηνή Δ</div>
+        <p>
+          Η Ελένη έχει <strong>κακή φήμη</strong> σε όλο τον ελληνικό κόσμο:
+          παρουσιάζεται ως άπιστη και επικίνδυνη, ενώ στο έργο
+          παρουσιάζεται πιστή και αποφασισμένη να σώσει τον γάμο της.
+        </p>
+        <div class="scene-options">
+          <label><input type="radio" name="scene4" value="einai"> ΕΙΝΑΙ</label>
+          <label><input type="radio" name="scene4" value="fainetai"> ΦΑΙΝΕΣΘΑΙ</label>
+        </div>
+      </div>
+    </div>
+
+    <div class="highlight-box">
+      <strong>Συζήτηση στην τάξη:</strong>
+      Σε ποιες σκηνές η εικόνα αδικεί την αλήθεια; Πότε το «φαίνεσθαι»
+      γίνεται επικίνδυνο;
+    </div>
+
+    <div class="btn-row no-print">
+      <button class="secondary" type="button" data-prev>⟵ Προηγούμενο</button>
+      <button type="button" data-next>Επόμενο βήμα ➜</button>
+    </div>
+  </section>
+
+  <!-- Βήμα 4 – Ομάδες, κριτές, τράπεζα επιχειρημάτων -->
+  <section class="card step">
+    <h2>Βήμα 4: Ομάδες, κριτές και τράπεζα επιχειρημάτων</h2>
+    <p>
+      Η τάξη χωρίζεται σε δύο βασικές ομάδες και σε μια τρίτη ομάδα κριτών/τριών.
+    </p>
+
+    <div class="grid-2">
+      <div class="role-box">
+        <div class="badge">🌀 Ομάδα «ΕΙΝΑΙ»</div>
+        <p>
+          Υποστηρίζει ότι στη ζωή έχει τελικά μεγαλύτερη σημασία αυτό που
+          <strong>είμαστε πραγματικά</strong>: ο χαρακτήρας, οι πράξεις, η αλήθεια,
+          ανεξάρτητα από το πώς μας βλέπουν οι άλλοι.
+        </p>
+      </div>
+      <div class="role-box seeming">
+        <div class="badge orange">✨ Ομάδα «ΦΑΙΝΕΣΘΑΙ»</div>
+        <p>
+          Υποστηρίζει ότι στην κοινωνία και ειδικά στη δημόσια ζωή,
+          <strong>η εικόνα και η φήμη</strong> επηρεάζουν πιο πολύ από την πραγματικότητα.
+        </p>
+      </div>
+      <div class="role-box judges">
+        <div class="badge blue">⚖️ Κριτές – Παρατηρητές/τριες</div>
+        <p>
+          Παρακολουθούν το debate, σημειώνουν τα πιο πειστικά επιχειρήματα
+          και ελέγχουν αν τηρούνται οι κανόνες σεβασμού και διαλόγου.
+        </p>
+      </div>
+    </div>
+
+    <p class="muted">
+      Μπορείτε να σημειώσετε εδώ πώς κατανεμήθηκαν οι μαθητές/τριες (προαιρετικό):
+    </p>
+    <textarea id="roles-notes" placeholder="Σύντομη σημείωση για τη σύνθεση των ομάδων..."></textarea>
+
+    <h3>Τράπεζα επιχειρημάτων</h3>
+    <p>
+      Κάθε ομάδα προετοιμάζει 3–5 βασικά επιχειρήματα.
+      Με τα κουμπιά που ακολουθούν μπορείτε να δημιουργείτε
+      νέα πλαίσια επιχειρημάτων για κάθε πλευρά.
+    </p>
+
+    <div class="grid-2">
+      <div>
+        <h3>🌀 Επιχειρήματα πλευράς «ΕΙΝΑΙ»</h3>
+        <div id="being-arguments"></div>
+        <button class="small no-print" type="button" onclick="addArgumentCard('being')">➕ Προσθήκη επιχειρήματος</button>
+        <p class="muted">
+          Κάθε πάτημα δημιουργεί νέο πλαίσιο με χωριστή καταγραφή επιχειρήματος.
+        </p>
+      </div>
+      <div>
+        <h3>✨ Επιχειρήματα πλευράς «ΦΑΙΝΕΣΘΑΙ»</h3>
+        <div id="seeming-arguments"></div>
+        <button class="small no-print" type="button" onclick="addArgumentCard('seeming')">➕ Προσθήκη επιχειρήματος</button>
+        <p class="muted">
+          Προσπαθήστε να στηρίξετε τα επιχειρήματά σας με σκηνές από την «Ελένη»
+          και παραδείγματα από τη σύγχρονη ζωή.
+        </p>
+      </div>
+    </div>
+
+    <div class="highlight-box">
+      <strong>Τράπεζα φράσεων για debate:</strong>
+      <ul>
+        <li>«Κατά τη γνώμη μας, το πιο σημαντικό είναι ότι...»</li>
+        <li>«Το παράδειγμα αυτό δείχνει πως...»</li>
+        <li>«Σε αντίθεση με όσα λέει η άλλη πλευρά...»</li>
+        <li>«Θα θέλαμε να αντικρούσουμε το επιχείρημα ότι...»</li>
+        <li>«Συνοψίζοντας, πιστεύουμε ότι...»</li>
+      </ul>
+    </div>
+
+    <div class="btn-row no-print" style="margin-top:0.8rem;">
+      <button class="small secondary" type="button" onclick="printArguments()">🖨️ Αποθήκευση / Εκτύπωση επιχειρημάτων σε καθαρό PDF</button>
+      <span></span>
+    </div>
+
+    <div class="btn-row no-print">
+      <button class="secondary" type="button" data-prev>⟵ Προηγούμενο</button>
+      <button type="button" data-next>Επόμενο βήμα ➜</button>
+    </div>
+  </section>
+
+  <!-- Βήμα 5 – Debate, χρονόμετρο, rubric & τελική ψηφοφορία -->
+  <section class="card step">
+    <h2>Βήμα 5: Debate, χρονόμετρο, rubric &amp; τελική ψηφοφορία</h2>
+    <p>
+      Τώρα οι δύο πλευρές παρουσιάζουν τα επιχειρήματά τους σε 2–3 γύρους
+      (βασικά επιχειρήματα, ανταπάντηση, καταληκτική δήλωση). Ο χρόνος του/της
+      κάθε ομιλητή/τριας ρυθμίζεται από το <strong>χρονόμετρο</strong> και
+      οι κριτές καταγράφουν τη βαθμολογία τους στη <strong>ρουμπρίκα</strong>.
+    </p>
+
+    <h3>Χρονόμετρο debate</h3>
+    <div class="inline-inputs">
+      <label for="timer-minutes" class="muted">Λεπτά:</label>
+      <input type="number" id="timer-minutes" min="0" value="3">
+      <label for="timer-seconds" class="muted">Δευτ.:</label>
+      <input type="number" id="timer-seconds" min="0" max="59" value="0">
+      <label for="speaker-select" class="muted">Πλευρά που μιλά:</label>
+      <select id="speaker-select">
+        <option value="Ομάδα «ΕΙΝΑΙ»">🌀 Ομάδα «ΕΙΝΑΙ»</option>
+        <option value="Ομάδα «ΦΑΙΝΕΣΘΑΙ»">✨ Ομάδα «ΦΑΙΝΕΣΘΑΙ»</option>
+      </select>
+    </div>
+
+    <div class="timer-display" id="timer-display">
+      <span id="display-min">03</span>:<span id="display-sec">00</span>
+    </div>
+    <p class="muted" id="current-speaker">Τώρα μιλά: Ομάδα «ΕΙΝΑΙ»</p>
+
+    <div class="btn-row no-print">
+      <button class="small" type="button" onclick="startTimer()">▶ Έναρξη</button>
+      <button class="small secondary" type="button" onclick="resetTimer()">⏹ Στοπ / Επαναφορά</button>
+    </div>
+
+    <h3>Rubric κριτών – Βαθμολογία γύρου</h3>
+    <p class="muted">
+      Οι κριτές βαθμολογούν κάθε πλευρά από <strong>1 έως 4</strong>
+      σε κάθε κριτήριο (1 = χρειάζεται βελτίωση, 4 = εξαιρετικά).
+    </p>
+
+    <div class="rubric-block">
+      <div class="rubric-title-row">
+        <div class="rubric-title-main">
+          <strong>Κριτήρια για τους/τις κριτές</strong>
+          <div class="rubric-subtitle">
+            Εστιάστε στο <em>πώς</em> παρουσιάζεται η θέση και όχι στο αν συμφωνείτε προσωπικά.
+          </div>
+        </div>
+        <div class="rubric-badge">Κλίμακα: 1–4 ανά κριτήριο</div>
+      </div>
+
+      <div class="rubric-table">
+        <div class="rubric-row header">
+          <div>Κριτήριο</div>
+          <div class="rubric-col-label">🌀 ΕΙΝΑΙ (1–4)</div>
+          <div class="rubric-col-label">✨ ΦΑΙΝΕΣΘΑΙ (1–4)</div>
+        </div>
+
+        <div class="rubric-row">
+          <div class="rubric-label">Χρησιμοποίησε η ομάδα συγκεκριμένα στοιχεία/χωρία από την «Ελένη»;</div>
+          <div><input type="number" min="1" max="4" id="rubric-being-1"></div>
+          <div><input type="number" min="1" max="4" id="rubric-seeming-1"></div>
+        </div>
+
+        <div class="rubric-row">
+          <div class="rubric-label">Σύνδεσε τα επιχειρήματα με τη σημερινή πραγματικότητα;</div>
+          <div><input type="number" min="1" max="4" id="rubric-being-2"></div>
+          <div><input type="number" min="1" max="4" id="rubric-seeming-2"></div>
+        </div>
+
+        <div class="rubric-row">
+          <div class="rubric-label">Τήρησε τους κανόνες σεβασμού απέναντι στον αντίλογο;</div>
+          <div><input type="number" min="1" max="4" id="rubric-being-3"></div>
+          <div><input type="number" min="1" max="4" id="rubric-seeming-3"></div>
+        </div>
+
+        <div class="rubric-row">
+          <div class="rubric-label">Διατύπωσε σαφές, καταληκτικό συμπέρασμα;</div>
+          <div><input type="number" min="1" max="4" id="rubric-being-4"></div>
+          <div><input type="number" min="1" max="4" id="rubric-seeming-4"></div>
+        </div>
+      </div>
+
+      <div class="rubric-buttons-row no-print">
+        <button class="small" type="button" onclick="calculateRoundScores()">📏 Υπολογισμός βαθμολογίας γύρου</button>
+        <button class="small secondary" type="button" onclick="printRound()">🖨️ Αποθήκευση / Εκτύπωση βαθμολογίας σε καθαρό PDF</button>
+      </div>
+
+      <div id="round-results" class="round-results-text"></div>
+
+      <div class="round-progress">
+        <div class="round-track">
+          <div class="round-fill" id="round-progress-fill"></div>
+        </div>
+        <div class="round-progress-label" id="round-progress-label"></div>
+      </div>
+    </div>
+
+    <h3>Σημειώσεις κριτών / Παρατηρήσεις</h3>
+    <textarea id="judges-notes" placeholder="Σημειώσεις κριτών/τριών / παρατηρητών/τριών (προαιρετικά)..."></textarea>
+
+    <h3>Τελική ψηφοφορία μετά το debate</h3>
+    <p>
+      Μετά το debate, η τάξη ψηφίζει ξανά στο ίδιο ερώτημα.
+      Έχει αλλάξει η άποψή σας;
+    </p>
+
+    <div class="vote-inputs">
+      <div class="vote-box">
+        <strong>Πλευρά «ΕΙΝΑΙ» (μετά)</strong>
+        <input type="number" id="post-being" min="0" value="0">
+      </div>
+      <div class="vote-box">
+        <strong>Πλευρά «ΦΑΙΝΕΣΘΑΙ» (μετά)</strong>
+        <input type="number" id="post-seeming" min="0" value="0">
+      </div>
+      <div class="vote-box">
+        <strong>Αβέβαιος/η (μετά)</strong>
+        <input type="number" id="post-uncertain" min="0" value="0">
+      </div>
+    </div>
+
+    <button class="small no-print" type="button" onclick="calculatePostVote()">Υπολογισμός &amp; σύγκριση με πριν</button>
+
+    <div id="post-results" class="vote-results"></div>
+    <div id="post-chart" class="bar-chart"></div>
+
+    <div class="highlight-box">
+      <strong>Αναστοχασμός (προφορικά ή γραπτά):</strong>
+      <ul>
+        <li>Άλλαξε η άποψή σου μετά το debate; Γιατί;</li>
+        <li>Πώς συνδέεται η ιστορία της Ελένης με τη σημερινή εποχή των social media;</li>
+        <li>Τι μπορούμε να κάνουμε ώστε το «είναι» να μη χάνεται μέσα στο «φαίνεσθαι»;</li>
+      </ul>
+    </div>
+
+    <div class="btn-row no-print">
+      <button class="secondary" type="button" data-prev>⟵ Προηγούμενο</button>
+      <button class="secondary" type="button" onclick="goToStep(0)">⬅ Επιστροφή στην αρχή</button>
+    </div>
+  </section>
+</main>
+
+<!-- Ειδική σελίδα εκτύπωσης μόνο με επιχειρήματα / rubric -->
+<div id="print-summary"></div>
+
+<footer>
+  ✨✍️ Δημιουργία: Παναγιώτης Δόμβρος, Εκπαιδευτικός Αγγλικών-Θεατρολόγος, Με την Επιφύλαξη Παντός Δικαιώματος ✍️✨
+</footer>
+
+<script>
+  // --- Πλοήγηση βημάτων ---
+  const steps = Array.from(document.querySelectorAll('.step'));
+  const stepIndicator = document.getElementById('stepIndicator');
+  let currentStep = 0;
+
+  function buildStepDots() {
+    stepIndicator.innerHTML = '';
+    steps.forEach((_, idx) => {
+      const dot = document.createElement('div');
+      dot.className = 'step-dot' + (idx === 0 ? ' active' : '');
+      stepIndicator.appendChild(dot);
+    });
+  }
+
+  function updateStepDots() {
+    const dots = stepIndicator.querySelectorAll('.step-dot');
+    dots.forEach((dot, idx) => {
+      dot.classList.toggle('active', idx === currentStep);
+    });
+  }
+
+  function showStep(index) {
+    if (index < 0 || index >= steps.length) return;
+    steps.forEach((s, i) => {
+      s.classList.toggle('active', i === index);
+    });
+    currentStep = index;
+    updateStepDots();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  function goToStep(index) {
+    showStep(index);
+  }
+
+  document.querySelectorAll('[data-next]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      if (currentStep < steps.length - 1) showStep(currentStep + 1);
+    });
+  });
+
+  document.querySelectorAll('[data-prev]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      if (currentStep > 0) showStep(currentStep - 1);
+    });
+  });
+
+  buildStepDots();
+
+  // --- Ψηφοφορίες ---
+  let preVote = { being: 0, seeming: 0, unsure: 0 };
+
+  function makeBarRow(label, percent, type) {
+    const row = document.createElement('div');
+    row.className = 'bar-row';
+
+    const labelEl = document.createElement('div');
+    labelEl.className = 'bar-label';
+    labelEl.textContent = label;
+
+    const track = document.createElement('div');
+    track.className = 'bar-track';
+
+    const fill = document.createElement('div');
+    fill.className = 'bar-fill';
+    if (type === 'seeming') fill.classList.add('seeming');
+    if (type === 'uncertain') fill.classList.add('uncertain');
+    fill.style.width = Math.max(parseFloat(percent), 0.1) + '%';
+
+    const value = document.createElement('div');
+    value.className = 'bar-value';
+    value.textContent = percent + '%';
+
+    track.appendChild(fill);
+    row.appendChild(labelEl);
+    row.appendChild(track);
+    row.appendChild(value);
+
+    return row;
+  }
+
+  function calculatePreVote() {
+    const b = parseInt(document.getElementById('pre-being').value) || 0;
+    const s = parseInt(document.getElementById('pre-seeming').value) || 0;
+    const u = parseInt(document.getElementById('pre-uncertain').value) || 0;
+    const total = b + s + u;
+    const resEl = document.getElementById('pre-results');
+    const chartEl = document.getElementById('pre-chart');
+
+    if (!total) {
+      resEl.textContent = 'Δώστε τουλάχιστον μία ψήφο για να υπάρξουν αποτελέσματα.';
+      chartEl.innerHTML = '';
+      return;
+    }
+
+    const pb = Math.round((b / total) * 100);
+    const ps = Math.round((s / total) * 100);
+    const pu = 100 - pb - ps;
+
+    preVote = { being: b, seeming: s, unsure: u };
+
+    resEl.innerHTML =
+      'Σύνολο: <strong>' + total + '</strong> μαθητές/τριες – ' +
+      'ΕΙΝΑΙ: <strong>' + b + '</strong> (' + pb + '%), ' +
+      'ΦΑΙΝΕΣΘΑΙ: <strong>' + s + '</strong> (' + ps + '%), ' +
+      'Αβέβαιοι: <strong>' + u + '</strong> (' + pu + '%).';
+
+    chartEl.innerHTML = '';
+    chartEl.appendChild(makeBarRow('ΕΙΝΑΙ (πριν)', pb, 'being'));
+    chartEl.appendChild(makeBarRow('ΦΑΙΝΕΣΘΑΙ (πριν)', ps, 'seeming'));
+    chartEl.appendChild(makeBarRow('Αβέβαιοι (πριν)', pu, 'uncertain'));
+  }
+
+  function diffText(v) {
+    if (v > 0) return '(+' + v + ')';
+    if (v < 0) return '(' + v + ')';
+    return '(καμία μεταβολή)';
+  }
+
+  function calculatePostVote() {
+    const b = parseInt(document.getElementById('post-being').value) || 0;
+    const s = parseInt(document.getElementById('post-seeming').value) || 0;
+    const u = parseInt(document.getElementById('post-uncertain').value) || 0;
+    const total = b + s + u;
+    const resEl = document.getElementById('post-results');
+    const chartEl = document.getElementById('post-chart');
+
+    if (!total) {
+      resEl.textContent = 'Δώστε τουλάχιστον μία ψήφο για να υπάρξουν αποτελέσματα.';
+      chartEl.innerHTML = '';
+      return;
+    }
+
+    const pb = Math.round((b / total) * 100);
+    const ps = Math.round((s / total) * 100);
+    const pu = 100 - pb - ps;
+
+    const diffB = b - preVote.being;
+    const diffS = s - preVote.seeming;
+    const diffU = u - preVote.unsure;
+
+    resEl.innerHTML =
+      'Σύνολο: <strong>' + total + '</strong> μαθητές/τριες – ' +
+      'ΕΙΝΑΙ: <strong>' + b + '</strong> (' + pb + '%) ' + diffText(diffB) + ', ' +
+      'ΦΑΙΝΕΣΘΑΙ: <strong>' + s + '</strong> (' + ps + '%) ' + diffText(diffS) + ', ' +
+      'Αβέβαιοι: <strong>' + u + '</strong> (' + pu + '%) ' + diffText(diffU) + '.';
+
+    chartEl.innerHTML = '';
+    chartEl.appendChild(makeBarRow('ΕΙΝΑΙ (μετά)', pb, 'being'));
+    chartEl.appendChild(makeBarRow('ΦΑΙΝΕΣΘΑΙ (μετά)', ps, 'seeming'));
+    chartEl.appendChild(makeBarRow('Αβέβαιοι (μετά)', pu, 'uncertain'));
+  }
+
+  // --- Χρονόμετρο debate ---
+  let timerInterval = null;
+  let remainingSeconds = 0;
+
+  function updateTimerDisplay() {
+    const min = Math.floor(remainingSeconds / 60);
+    const sec = remainingSeconds % 60;
+    const minSpan = document.getElementById('display-min');
+    const secSpan = document.getElementById('display-sec');
+    if (!minSpan || !secSpan) return;
+    minSpan.textContent = String(min).padStart(2, '0');
+    secSpan.textContent = String(sec).padStart(2, '0');
+  }
+
+  function startTimer() {
+    const min = parseInt(document.getElementById('timer-minutes').value) || 0;
+    const sec = parseInt(document.getElementById('timer-seconds').value) || 0;
+    remainingSeconds = min * 60 + sec;
+
+    if (remainingSeconds <= 0) {
+      alert('Βάλτε τουλάχιστον μερικά δευτερόλεπτα στο χρονόμετρο.');
+      return;
+    }
+
+    if (timerInterval) {
+      clearInterval(timerInterval);
+      timerInterval = null;
+    }
+
+    updateTimerDisplay();
+
+    timerInterval = setInterval(() => {
+      remainingSeconds--;
+      if (remainingSeconds <= 0) {
+        remainingSeconds = 0;
+        updateTimerDisplay();
+        clearInterval(timerInterval);
+        timerInterval = null;
+        alert('Τέλος χρόνου για τον/την ομιλητή/τρια!');
+        return;
+      }
+      updateTimerDisplay();
+    }, 1000);
+  }
+
+  function resetTimer() {
+    if (timerInterval) {
+      clearInterval(timerInterval);
+      timerInterval = null;
+    }
+    const min = parseInt(document.getElementById('timer-minutes').value) || 0;
+    const sec = parseInt(document.getElementById('timer-seconds').value) || 0;
+    remainingSeconds = min * 60 + sec;
+    updateTimerDisplay();
+  }
+
+  const speakerSelect = document.getElementById('speaker-select');
+  if (speakerSelect) {
+    speakerSelect.addEventListener('change', (e) => {
+      const current = document.getElementById('current-speaker');
+      if (current) {
+        current.textContent = 'Τώρα μιλά: ' + e.target.value;
+      }
+    });
+  }
+
+  // --- Δυναμικά επιχειρήματα ---
+  function addArgumentCard(side) {
+    const containerId = side === 'being' ? 'being-arguments' : 'seeming-arguments';
+    const container = document.getElementById(containerId);
+    if (!container) return;
+
+    const index = container.querySelectorAll('.arg-card').length + 1;
+
+    const card = document.createElement('div');
+    card.className = 'arg-card';
+
+    const title = document.createElement('div');
+    title.className = 'arg-card-title';
+    title.textContent = 'Επιχείρημα ' + index;
+    card.appendChild(title);
+
+    const t1 = document.createElement('textarea');
+    t1.placeholder = 'Σύντομη διατύπωση επιχειρήματος...';
+    card.appendChild(t1);
+
+    const t2 = document.createElement('textarea');
+    t2.placeholder = 'Στήριξη από το κείμενο της «Ελένης» (χωρίο, παραφράση)...';
+    card.appendChild(t2);
+
+    const t3 = document.createElement('textarea');
+    t3.placeholder = 'Σύνδεση με τη σημερινή εποχή (social media, φήμη κτλ.)...';
+    card.appendChild(t3);
+
+    container.appendChild(card);
+  }
+
+  // --- Συγκέντρωση και υπολογισμός βαθμολογίας rubric ---
+  function gatherRoundStats() {
+    const criteriaTexts = [
+      'Χρησιμοποίησε η ομάδα συγκεκριμένα στοιχεία/χωρία από την «Ελένη»;',
+      'Σύνδεσε τα επιχειρήματα με τη σημερινή πραγματικότητα;',
+      'Τήρησε τους κανόνες σεβασμού απέναντι στον αντίλογο;',
+      'Διατύπωσε σαφές, καταληκτικό συμπέρασμα;'
+    ];
+
+    let totalBeing = 0;
+    let totalSeeming = 0;
+    let any = false;
+
+    const perCriterion = [];
+
+    for (let i = 1; i <= 4; i++) {
+      const b = parseInt(document.getElementById('rubric-being-' + i)?.value) || 0;
+      const s = parseInt(document.getElementById('rubric-seeming-' + i)?.value) || 0;
+
+      if (b > 0 || s > 0) {
+        any = true;
+      }
+
+      totalBeing += b;
+      totalSeeming += s;
+
+      perCriterion.push({
+        label: criteriaTexts[i - 1],
+        being: b,
+        seeming: s
+      });
+    }
+
+    return {
+      any,
+      totalBeing,
+      totalSeeming,
+      perCriterion
+    };
+  }
+
+  function calculateRoundScores() {
+    const stats = gatherRoundStats();
+    const resEl = document.getElementById('round-results');
+    const fillEl = document.getElementById('round-progress-fill');
+    const labelEl = document.getElementById('round-progress-label');
+
+    if (!resEl || !fillEl || !labelEl) return;
+
+    if (!stats.any) {
+      resEl.textContent = 'Δεν έχουν καταγραφεί βαθμολογίες για τον γύρο.';
+      fillEl.style.width = '0%';
+      labelEl.textContent = '';
+      return;
+    }
+
+    const maxPerSide = 4 * 4; // 4 κριτήρια × 4 βαθμοί
+    const percentBeing = Math.round((stats.totalBeing / maxPerSide) * 100);
+    const percentSeeming = Math.round((stats.totalSeeming / maxPerSide) * 100);
+
+    let leadText = '';
+    if (percentBeing > percentSeeming) {
+      leadText = 'Προβάδισμα έχει η πλευρά «ΕΙΝΑΙ».';
+    } else if (percentSeeming > percentBeing) {
+      leadText = 'Προβάδισμα έχει η πλευρά «ΦΑΙΝΕΣΘΑΙ».';
+    } else {
+      leadText = 'Ισοπαλία ανάμεσα στις δύο πλευρές.';
+    }
+
+    resEl.innerHTML =
+      'Σύνολο βαθμών πλευράς «ΕΙΝΑΙ»: <strong>' + stats.totalBeing + '</strong> / ' + maxPerSide +
+      ' (' + percentBeing + '%).<br>' +
+      'Σύνολο βαθμών πλευράς «ΦΑΙΝΕΣΘΑΙ»: <strong>' + stats.totalSeeming + '</strong> / ' + maxPerSide +
+      ' (' + percentSeeming + '%).<br>' +
+      '<em>' + leadText + '</em>';
+
+    const maxPercent = Math.max(percentBeing, percentSeeming, 0);
+    fillEl.style.width = maxPercent + '%';
+
+    labelEl.textContent =
+      'ΕΙΝΑΙ: ' + percentBeing + '% – ΦΑΙΝΕΣΘΑΙ: ' + percentSeeming + '%.';
+  }
+
+  // --- Εκτύπωση καθαρού PDF με rubric (όπως στην Antigone) ---
+  function printRound() {
+    const container = document.getElementById('print-summary');
+    if (!container) {
+      alert('Δεν βρέθηκε το στοιχείο print-summary.');
+      return;
+    }
+
+    const stats = gatherRoundStats();
+
+    let html = '';
+    html += '<h1>Ελένη – ΕΙΝΑΙ vs ΦΑΙΝΕΣΘΑΙ<br>Βαθμολογία κριτών/τριών (γύρος debate)</h1>';
+
+    const maxPerSide = 4 * 4;
+
+    if (!stats.any) {
+      html += '<p>Δεν έχουν καταγραφεί ακόμη βαθμολογίες για τον γύρο.</p>';
+    } else {
+      let winner;
+      if (stats.totalBeing > stats.totalSeeming) winner = 'πλευρά «ΕΙΝΑΙ»';
+      else if (stats.totalSeeming > stats.totalBeing) winner = 'πλευρά «ΦΑΙΝΕΣΘΑΙ»';
+      else winner = 'Ισοπαλία';
+
+      html += '<h2>Συνολική εικόνα</h2>';
+      html += '<p>Συνολική βαθμολογία πλευράς «ΕΙΝΑΙ»: <strong>' + stats.totalBeing + '</strong> / ' + maxPerSide + '.<br>';
+      html += 'Συνολική βαθμολογία πλευράς «ΦΑΙΝΕΣΘΑΙ»: <strong>' + stats.totalSeeming + '</strong> / ' + maxPerSide + '.<br>';
+      html += 'Νικητής γύρου (με βάση τη βαθμολογία): <strong>' + winner + '</strong>.</p>';
+
+      const totalAll = stats.totalBeing + stats.totalSeeming;
+      if (totalAll > 0) {
+        const percentBeing = (stats.totalBeing / totalAll) * 100;
+        const percentSeeming = 100 - percentBeing;
+        html += '<p>Ποσοστό συμμετοχής στη συνολική βαθμολογία: πλευρά «ΕΙΝΑΙ» ' +
+                percentBeing.toFixed(1) + '% – πλευρά «ΦΑΙΝΕΣΘΑΙ» ' +
+                percentSeeming.toFixed(1) + '%.</p>';
+      }
+
+      const anyCriterion = stats.perCriterion?.some(c => c.being || c.seeming);
+      if (anyCriterion) {
+        html += '<h2>Αναλυτικά ανά κριτήριο</h2><ol>';
+        stats.perCriterion.forEach(c => {
+          if (!c.being && !c.seeming) return;
+          html += '<li><strong>' + c.label + '</strong><br>' +
+                  'Πλευρά «ΕΙΝΑΙ»: ' + (c.being || '—') + ' / 4 &nbsp;–&nbsp; ' +
+                  'Πλευρά «ΦΑΙΝΕΣΘΑΙ»: ' + (c.seeming || '—') + ' / 4</li>';
+        });
+        html += '</ol>';
+      }
+    }
+
+    const notes = (document.getElementById('judges-notes')?.value || '').trim();
+    if (notes) {
+      html += '<h2>Σημειώσεις κριτών / παρατηρητών</h2>';
+      html += '<p>' + notes.replace(/\n/g, '<br>') + '</p>';
+    }
+
+    container.innerHTML = html;
+    window.print();
+  }
+
+  // --- Συλλογή επιχειρημάτων για εκτύπωση (ΕΙΝΑΙ / ΦΑΙΝΕΣΘΑΙ) ---
+  function collectArgumentsForPrint(side) {
+    const containerId = side === 'being' ? 'being-arguments' : 'seeming-arguments';
+    const container = document.getElementById(containerId);
+    if (!container) return [];
+
+    const cards = container.querySelectorAll('.arg-card');
+    const items = [];
+
+    cards.forEach(card => {
+      const fields = card.querySelectorAll('textarea');
+      if (!fields.length) return;
+      const text = (fields[0].value || '').trim();
+      const support = (fields[1].value || '').trim();
+      const modern = (fields[2].value || '').trim();
+
+      const parts = [];
+      if (text) parts.push(text);
+      if (support) parts.push('Τεκμηρίωση: ' + support);
+      if (modern) parts.push('Σύνδεση με σήμερα: ' + modern);
+
+      if (parts.length) {
+        items.push(parts.join(' — '));
+      }
+    });
+
+    return items;
+  }
+
+  // --- Εκτύπωση καθαρού PDF μόνο με τράπεζα επιχειρημάτων (Βήμα 4) ---
+  function printArguments() {
+    const container = document.getElementById('print-summary');
+    if (!container) {
+      alert('Δεν βρέθηκε το στοιχείο print-summary.');
+      return;
+    }
+
+    let html = '';
+    html += '<h1>Ελένη – ΕΙΝΑΙ vs ΦΑΙΝΕΣΘΑΙ<br>Τράπεζα Επιχειρημάτων</h1>';
+
+    const beingItems = collectArgumentsForPrint('being');
+    const seemingItems = collectArgumentsForPrint('seeming');
+
+    if (!beingItems.length && !seemingItems.length) {
+      html += '<p>Δεν έχουν καταγραφεί επιχειρήματα.</p>';
+    } else {
+      if (beingItems.length) {
+        html += '<h2>Επιχειρήματα πλευράς «ΕΙΝΑΙ»</h2><ul>';
+        beingItems.forEach(item => {
+          html += '<li>' + item.replace(/\n/g, '<br>') + '</li>';
+        });
+        html += '</ul>';
+      }
+      if (seemingItems.length) {
+        html += '<h2>Επιχειρήματα πλευράς «ΦΑΙΝΕΣΘΑΙ»</h2><ul>';
+        seemingItems.forEach(item => {
+          html += '<li>' + item.replace(/\n/g, '<br>') + '</li>';
+        });
+        html += '</ul>';
+      }
+    }
+
+    container.innerHTML = html;
+    window.print();
+  }
+
+  // Εκκίνηση από το πρώτο βήμα
+  showStep(0);
+</script>
+</body>
+</html>
