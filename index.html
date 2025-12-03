@@ -25,11 +25,15 @@
       margin: 0;
       background: radial-gradient(circle at top, #e0f7fa 0, #e8f4f7 40%, #e3edf2 100%);
       color: var(--text-main);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
     }
 
     header {
       padding: 1.2rem 1rem 0.4rem;
       text-align: center;
+      flex-shrink: 0;
     }
 
     .title-row {
@@ -84,8 +88,13 @@
       max-width: 980px;
       margin: 0 auto 1.5rem;
       padding: 0 1rem 1.5rem;
+      flex-grow: 1;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
     }
 
+    /* Standard Card Style (White box) */
     .card {
       background: var(--card-bg);
       border-radius: 12px;
@@ -93,14 +102,47 @@
       box-shadow: 0 10px 28px rgba(0, 0, 0, 0.06);
       border: 1px solid var(--border);
       margin-bottom: 1rem;
+      width: 100%;
     }
 
     .step {
       display: none;
+      width: 100%;
     }
 
     .step.active {
       display: block;
+      animation: fadeIn 0.4s ease-out;
+    }
+    
+    /* Cover Page Specific Styles */
+    .step.cover-view {
+      /* Flex centering for the cover page content */
+      display: none; /* hidden by default like other steps */
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 60vh;
+      text-align: center;
+    }
+    
+    .step.cover-view.active {
+      display: flex; /* flex when active */
+    }
+
+    .cover-image {
+      max-height: 65vh; 
+      max-width: 100%; 
+      width: auto; 
+      border-radius: 8px; 
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2); 
+      margin-bottom: 1.5rem; 
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(5px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
     h2 {
@@ -545,6 +587,7 @@
       padding: 0.7rem 0.5rem 1.3rem;
       font-size: 0.8rem;
       color: var(--text-muted);
+      flex-shrink: 0;
     }
 
     .no-print {
@@ -619,8 +662,14 @@
 </header>
 
 <main>
-  <!-- Βήμα 1 – Εισαγωγή -->
-  <section class="card step active">
+  <section class="step cover-view active">
+    <img src="helen.jpg" alt="Helen" class="cover-image">
+    <div style="width: 100%;">
+      <button type="button" data-next style="font-size: 1.2rem; padding: 0.7rem 2.2rem; box-shadow: 0 4px 14px rgba(0, 96, 100, 0.3);">Είσοδος ➜</button>
+    </div>
+  </section>
+
+  <section class="card step">
     <h2>Βήμα 1: Εισαγωγή στο δίλημμα</h2>
     <p>
       Στην <strong>Ελένη του Ευριπίδη</strong> ο πόλεμος για την Τροία παρουσιάζεται ως
@@ -647,7 +696,6 @@
     </div>
   </section>
 
-  <!-- Βήμα 2 – Αρχική ψηφοφορία -->
   <section class="card step">
     <h2>Βήμα 2: Αρχική ψηφοφορία τάξης</h2>
     <p>
@@ -691,7 +739,6 @@
     </div>
   </section>
 
-  <!-- Βήμα 3 – Σκηνές -->
   <section class="card step">
     <h2>Βήμα 3: Σκηνές από την «Ελένη» – ΕΙΝΑΙ ή ΦΑΙΝΕΣΘΑΙ;</h2>
     <p>
@@ -769,7 +816,6 @@
     </div>
   </section>
 
-  <!-- Βήμα 4 – Ομάδες, κριτές, τράπεζα επιχειρημάτων -->
   <section class="card step">
     <h2>Βήμα 4: Ομάδες, κριτές και τράπεζα επιχειρημάτων</h2>
     <p>
@@ -855,7 +901,6 @@
     </div>
   </section>
 
-  <!-- Βήμα 5 – Debate, χρονόμετρο, rubric & τελική ψηφοφορία -->
   <section class="card step">
     <h2>Βήμα 5: Debate, χρονόμετρο, rubric &amp; τελική ψηφοφορία</h2>
     <p>
@@ -997,7 +1042,6 @@
   </section>
 </main>
 
-<!-- Ειδική σελίδα εκτύπωσης μόνο με επιχειρήματα / rubric -->
 <div id="print-summary"></div>
 
 <footer>
@@ -1464,7 +1508,7 @@
     window.print();
   }
 
-  // Εκκίνηση από το πρώτο βήμα
+  // Εκκίνηση από το πρώτο βήμα (Cover Page, index 0)
   showStep(0);
 </script>
 </body>
